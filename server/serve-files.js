@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs");
 const { IncomingMessage, ServerResponse } = require("http");
 
@@ -60,7 +62,33 @@ function serve (file, req, res) {
 
             res.writeHead(200, headers);
 
-            res.write(f)
+            res.write(f);
+
+            res.end();
+
+        }
+
+    } else if (file.includes(".js")) {
+
+        if (fs.existsSync(file)) {
+
+            console.log(`the file ${file} was existed.`);
+
+            const f = fs.readFileSync(file, "utf-8");
+
+            console.log("---JS---");
+
+            console.log(f);
+
+            const headers = {
+
+                "Content-Type" : "application/javascript"
+
+            }
+
+            res.writeHead(200, headers);
+
+            res.write(f);
 
             res.end();
 

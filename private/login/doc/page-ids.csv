@@ -1,0 +1,4 @@
+id, name, value
+1, inp_#1_login, text
+2, inp_#2_pass, text_password
+3, subbtn_#1_form, button
